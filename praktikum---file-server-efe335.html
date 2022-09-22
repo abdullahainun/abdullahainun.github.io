@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Praktikum - File Server&nbsp;|&nbsp;Ainun’s Notes</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Praktikum - File Server">
+  
+    <meta name="description" content="Praktikum File Server menggunakan Vsftpd">
+    <meta property="og:description" content="Praktikum File Server menggunakan Vsftpd">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🗄️&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📕&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Library</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👣&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🗄️&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Praktikum - File Server</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Thu, Sep 22, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/TKJ.html">TKJ</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Administrasi Sistem Jaringan.html">Administrasi Sistem Jaringan</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/Praktikum.html">Praktikum</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/efe3357c2cdc462f915f1eaf8e66975a" class="PageRoot"><h1 id="https://www.notion.so/e82108082c1a46f189f1d88c744735cf" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/e82108082c1a46f189f1d88c744735cf"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Design System</span></span></h1><div id="https://www.notion.so/fff9e272eaef4677b4b62e637bc5225d" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F574a3e02-ecb0-4e3f-a308-bbb45df656c1%2Ffile_server_type_A.png?width=537&amp;table=block&amp;id=fff9e272-eaef-4677-b4b6-2e637bc5225d"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F574a3e02-ecb0-4e3f-a308-bbb45df656c1%2Ffile_server_type_A.png?width=537&amp;table=block&amp;id=fff9e272-eaef-4677-b4b6-2e637bc5225d" style="width:537px"/></a><figcaption><span class="SemanticStringArray"><span class="SemanticString">Image 1: Topologi LAN Yang berisi sebuah file server</span></span></figcaption></figure></div><div id="https://www.notion.so/3daed77f29f44938bc280a55690324e6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/20525003722749179ea16d61f7d3fee3" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Pada praktikum kali ini, kita akan mencoba mengimplementasikan dasar teori file server yang sudah kita bahas sebelumnya </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://abdullahainun.github.io/dasar-teori---file-server-efe335.html">disini</a></span><span class="SemanticString">. pada gambar diatas merupakan topologi sederhana yang akan kita gunakan untuk membuat file server pada jaringan local (LAN).  terdapat satu buah file server yang berisi </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://security.appspot.com/vsftpd.html#about">Vsftpd</a></span><span class="SemanticString">  dan tiga buah client yang berisi filezilla untuk mengakses file server yang dibuat. karena proses instalasi Vsftpd menggunakan jaringan internet, maka pastikan koneksi internet anda pada topologi ini dapat berfungsi dengan baik.</span></span></p></div><h1 id="https://www.notion.so/91cbbbc0fd4943bb82b8084074a5939d" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/91cbbbc0fd4943bb82b8084074a5939d"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Menyiapkan File Server</span></span></h1><h2 id="https://www.notion.so/899d7af14a3049fe83e0ff70faac17eb" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/899d7af14a3049fe83e0ff70faac17eb"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Step 1 - Install Vsftpd</span></span></h2><div id="https://www.notion.so/c70b3b4ce24d441282fb474dbee08d85" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://security.appspot.com/vsftpd.html#about">Vsftpd</a></span><span class="SemanticString"> atau “Very Secure FTP Daemon” merupakan salah satu aplikasi file server yang dapat dijalankan di sistem operasi linux like seperti ubuntu, redhat dan lain sebagainya. karena memiliki license GNU General Public License sehingga dapat digunakan oleh orang umum dengan gratis. untuk itu sesuai dengan kasus kita yang menggunakan ubuntu sebagai praktikum. maka untuk melakukan instalasi Vsftpd diperlukan perintah seperti dibawah ini.</span></span></p></div><pre id="https://www.notion.so/b8e2f7adbb32446eaea7f042e977abe1" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">apt</span> update
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> vsftpd</span></span></span></code></pre><div id="https://www.notion.so/2dac516ce0044ef9aae4c74fc9334f35" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">setelah proses instalasi selesai, langkah selanjutnya adalah melakukan konfigurasi yang diperlukan untuk keperluan file server. namun sebelum jauh kesana alangkah baiknya kita melakukan backup konfigurasi default terlebih dahulu agar apabila terjadi kesalahan dapat dikembalikan ke settingan default. untuk itu bisa digunakan perintah seperti ini.</span></span></p></div><pre id="https://www.notion.so/607ab46e576243cf95e288646968e31d" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">cp</span> /etc/vsftpd.conf /etc/vsftpd.conf.orig</span></span></span></code></pre><h2 id="https://www.notion.so/fe984ad9bd444b35852bcf6dce6986b9" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/fe984ad9bd444b35852bcf6dce6986b9"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Step 2 - Menyiapkan User Directory</span></span></h2><div id="https://www.notion.so/623c3c32f6674f5ea33f6e37e9f63024" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Agar dapat mengakses FTP Server diperlukan sebuah user. sebenarnya sistem operasi secara default biasanya sudah ada  user yang bisa dipake. namun agar dapat mengetahui tahapanya dari awal maka kita akan mencoba membuat user khusus untuk mengakses FTP Server. untuk itu berikut tahapan yang bisa dilakukan.</span></span></p></div><pre id="https://www.notion.so/6e4daf81366e4ed9831ef9351c9cc257" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> adduser rudi</span></span></span></code></pre><pre id="https://www.notion.so/6397226e27a84a00aad5b67166b33a19" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">mkdir</span> /home/rudi/ftp</span></span></span></code></pre><pre id="https://www.notion.so/ec0365b1e5334cb6af21b6100833d517" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">chown</span> nobody:nogroup /home/rudi/ftp</span></span></span></code></pre><pre id="https://www.notion.so/e23679ff6dd6470193fef7271a28a80a" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">chmod</span> a-w /home/rudi/ftp </span></span></span></code></pre><pre id="https://www.notion.so/3fb2b3f4bc3e4a6ca7df67453da706c7" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">ls</span> -la /home/rudi/ftp</span></span></span></code></pre><pre id="https://www.notion.so/2c0df956a8cf409fad5fc14d12bf074d" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">mkdir</span> /home/rudi/ftp/files
+<span class="token function">sudo</span> <span class="token function">chown</span> rudi:rudi /home/rudi/ftp/files</span></span></span></code></pre><pre id="https://www.notion.so/7c52b64dff914bb1a102b382a1d81c6a" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">ls</span> -la /home/rudi/ftp</span></span></span></code></pre><h2 id="https://www.notion.so/eeaf6b5d7468432bba5fee4679dd91a7" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/eeaf6b5d7468432bba5fee4679dd91a7"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Step 3 - Konfigurasi Akses FTP</span></span></h2><div id="https://www.notion.so/fdd5766499b843bbaf10d7be4b75f467" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Pada praktikum kali ini kita akan melakukan konfigurasi agar sebuah user dapat terhubung ke FTP Server. untuk itu hal pertama yang perlu dilakukan adalah membuka file konfigurasi vsftpd yang terdapat di </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">/etc/vsftpd.conf</code></span></span></p></div><pre id="https://www.notion.so/94247aa7470c40bdb6a1f16a89f6c032" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> <span class="token function">nano</span> /etc/vsftpd.conf</span></span></span></code></pre><pre id="https://www.notion.so/97ac7bb4c21346b69f064bf35812edd1" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span>
+<span class="token comment"># Allow anonymous FTP? (Disabled by default).</span>
+<span class="token assign-left variable">anonymous_enable</span><span class="token operator">=</span>NO
+<span class="token comment">#</span>
+<span class="token comment"># Uncomment this to allow local users to log in.</span>
+<span class="token assign-left variable">local_enable</span><span class="token operator">=</span>YES
+<span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span></span></span></span></code></pre><div id="https://www.notion.so/95bf6ef3afd0423aab9f6ed3a77052a4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">selajutnya, agar user dapat upload perlu uncomment baris </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">write_enable</code></span></span></p></div><pre id="https://www.notion.so/42a51f6e004e4639915970f6ac73b2e5" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span>
+<span class="token assign-left variable">write_enable</span><span class="token operator">=</span>YES
+<span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span></span></span></span></code></pre><div id="https://www.notion.so/06d8485afb744c14b19310a711f43237" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">diperlukan juga uncomment </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">chroot</code></span><span class="SemanticString"> agar dapat mencegah user yang terhubung ke FTP Server mengakses files lainnya selain path yang sudah disediakan</span></span></p></div><pre id="https://www.notion.so/1f966c7c2a0342f482607d0c755be47b" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span>
+<span class="token assign-left variable">chroot_local_user</span><span class="token operator">=</span>YES
+<span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span></span></span></span></code></pre><div id="https://www.notion.so/42e54099195d4316ae25b0a843918517" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">agar user yang mengakses sesuai dengan kebutuhan, maka silahkan replace </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">$USER</code></span><span class="SemanticString"> dibawah ini dengan user terkait.</span></span></p></div><pre id="https://www.notion.so/15d0682c1be64716ad804aa1bc9d362f" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span>
+<span class="token assign-left variable">user_sub_token</span><span class="token operator">=</span><span class="token environment constant">$USER</span>
+<span class="token assign-left variable">local_root</span><span class="token operator">=</span>/home/<span class="token environment constant">$USER</span>/ftp</span></span></span></code></pre><div id="https://www.notion.so/601c8a7919274532ba39a2c91abcca12" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Untuk mengizinkan akses FTP berdasarkan kasus per kasus, mari atur konfigurasi sehingga pengguna hanya memiliki akses saat mereka ditambahkan secara eksplisit ke daftar, bukan secara default:</span></span></p></div><pre id="https://www.notion.so/96f36844ba5c4590b53bafad4807151b" class="Code"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span>
+<span class="token assign-left variable">userlist_enable</span><span class="token operator">=</span>YES
+<span class="token assign-left variable">userlist_file</span><span class="token operator">=</span>/etc/vsftpd.userlist
+<span class="token assign-left variable">userlist_deny</span><span class="token operator">=</span>NO</span></span></span></code></pre><pre id="https://www.notion.so/3831b916509d486bbc15d1316e10d288" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token builtin class-name">echo</span> <span class="token string">"rudi"</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> -a /etc/vsftpd.userlist</span></span></span></code></pre><pre id="https://www.notion.so/d243c7f9a3bf48eda5dec26b2c729b5a" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">cat</span> /etc/vsftpd.userlist
+rudi</span></span></span></code></pre><pre id="https://www.notion.so/d77d88ef20364ccdaba67d4c17ced1a2" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> systemctl restart vsftpd</span></span></span></code></pre><div id="https://www.notion.so/5cb728150f8746f7b04277f7cc2fced7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/970d13c91af04d75b8914f71b0f1f398" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div></article>
+  <script
+      src="https://utteranc.es/client.js"
+      repo="abdullahainun/abdullahainun.github.io"
+      issue-term="title"
+      label="💬 Blog Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  <footer class="Footer">
+  <div>&copy; Ainun’s Notes 2022</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
