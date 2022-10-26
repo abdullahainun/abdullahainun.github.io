@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Dasar Teori - File Server&nbsp;|&nbsp;Ainun’s Notes</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Dasar Teori - File Server">
+  
+    <meta name="description" content="Apa Itu FIle Server : Pengertian, Cara Kerja &amp; Fungsinya">
+    <meta property="og:description" content="Apa Itu FIle Server : Pengertian, Cara Kerja &amp; Fungsinya">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📝&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📕&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Library</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👣&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👨🏻‍💻&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>[WIP] How to work with me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👣&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+      <div class="Header__Cover">
+        <img src="https://www.notion.so/images/page-cover/solid_blue.png">
+      </div>
+    
+    <div class="Header__Spacer ">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📝&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Dasar Teori - File Server</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Thu, Sep 22, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/TKJ.html">TKJ</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Administrasi Sistem Jaringan.html">Administrasi Sistem Jaringan</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--brown">
+            <a href="tag/Dasar Teori.html">Dasar Teori</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/6beeb9d506ac4335a980d42089815439" class="PageRoot"><div id="https://www.notion.so/1d8d5d767d9040bc87b7172683b040fe" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><h1 id="https://www.notion.so/33dbd2a05db44274bfb1290e02e4758e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/33dbd2a05db44274bfb1290e02e4758e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Pengertian File Server</strong></strong></span></span></h1><div id="https://www.notion.so/3a8f05cbb5be4a8dab56129bb37afc6a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">File server adalah computer yang terhubung pada suatu jaringan. Dimana jaringan tersebut berisi berbagai file yang terisi dalam suatu disk. Dimana, penggunaan file server ini bersifat lokal dan membutuhkan koneksi seperti Local Access Network (LAN).</span></span></p></div><h1 id="https://www.notion.so/0cb2d914b8024f578d7e11640ae04b7d" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/0cb2d914b8024f578d7e11640ae04b7d"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Jenis File Server</strong></strong></span></span></h1><div id="https://www.notion.so/ee0d44e0e6784947914d8f80224dc9fe" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Terdapat beberapa jenis file server yang harus Anda ketahui agar semakin paham penggunaan dari file server ini. Adapun jenis – jenis dari file server yang dimaksud adalah sebagai berikut:</span></span></p></div><details id="https://www.notion.so/52c6316ccec6448ea77fd4ee8734aba0" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Samba</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/66815f1a4665487f9f55aff7fa1f794c" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Samba merupakan jenis file server yang memiliki sistem multi protocol. Adapun multi protocol yang dimaksud adalah NetBeui, TCP/IP, IPX-SPX.</span></span></p></div><div id="https://www.notion.so/a14fdb1608c74ba3b7c76fa8cbef1143" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Samba juga menjadi penyaing para protocol yaitu Novell’s IPX-Based sebab menjadi jenis file server pertama yang memanfatakan sistem multi protocol dan menggantikan protocol Novell’s tersebut tanpa merubah infrastruktur jaringan.</span></span></p></div></div></details><details id="https://www.notion.so/5e222adf62f84053b6ce3814d83d1833" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">FTP Server</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/38600b2d9b814f6fa6cfa73557b973f7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Selain Samba, jenis file server selanjutnya yang wajib Anda pahami adalah FTP Server. Dimana, jenis file server ini merupakan singkatan dari File Transfer Protocol dan memiliki fungsi menukar file dalam sebuah jaringan menggunakan koneksi Transmission Control Protocol (TCP).</span></span></p></div><div id="https://www.notion.so/eef193f1f4e7416ea21cbaba6fddef2c" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">FTP Server ini memiliki dua bagian yakni FTP Server dan FTP Client. FTP Server memiliki fungsi untuk mengoperasikan software dalam bertukar file apabila terjadi permintaan dari server FTP Client.</span></span></p></div><div id="https://www.notion.so/9b2e5b93026a4ee4b9c7c68ead97e2d9" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Selanjutnya, FTP Client memiliki fungsi sebagai server pertama yang meminta koneksi pertukaran file kepada FTP Server.</span></span></p></div></div></details><h1 id="https://www.notion.so/de409085627540b1a8db2d54db4a6f37" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/de409085627540b1a8db2d54db4a6f37"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Manfaat File Server</strong></strong></span></span></h1><div id="https://www.notion.so/24946a3764474e8a9e973207d01248e5" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Terdapat beberapa manfaat dari file server tersebut yang wajib Anda ketahui. Adapun manfaat – manfaat dari file server yang wajib diketahui tersebut adalah sebagai berikut:</span></span></p></div><details id="https://www.notion.so/c4e3027145534e979e6538ec56026ec7" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Menghemat Resources atau Penyimpanan</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/d5702c70bd8c44449631b54c906bf042" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Manfaat file server yang pertama dalah menghemat resources atau penyimpanan pada sebuah computer.</span></span></p></div><div id="https://www.notion.so/120b52c02ff8471498617f4436373748" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Dengan pengaksesan file kepada server tersebut, maka otomatis file akan tersimpan dengan baik dan aman di server tanpa harus memenuhi computer. Sehingga, Anda dapat menyimpan file – file baru selanjutnya.</span></span></p></div></div></details><details id="https://www.notion.so/84a80511d3e34517a4117367f66a6a5d" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Berbagi Resources atau Penyimpanan</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/5b11fe42ad5a418a930f4deab6324fc7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Selain dari menghemat resources atau penyimpanan, manfaat dari file server ini adalah berbagai resources atau penyimpanan secara mudah.</span></span></p></div><div id="https://www.notion.so/f1f1bf9790e14d468d742a95b9c360b0" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Tanpa harus repot – repot melakukan pengiriman data secara berkala atau berulang, seseorang dapat dengan mudah melihat file – file yang dibutuhkan dari server tersebut dengan akses izin lokal.</span></span></p></div></div></details><h1 id="https://www.notion.so/9688d0968e83438a9154efe288198493" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/9688d0968e83438a9154efe288198493"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Fungsi File Server</strong></strong></span></span></h1><div id="https://www.notion.so/6d6854a078274379aa9819d85887dae6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Berikut ini adalah fungsi file server secara jelas akan terdeskripsi dan menjelaskan seberapa butuhnya file server ini pada sebuah komite atau organisasi:</span></span></p></div><details id="https://www.notion.so/2c46845510944522a0e6cdf1ea7aea3c" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Menjadi Tempat Berkomunikasi</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/e7457ed06b254df0b806e6e03c3e15df" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Fungsi file server pertama adalah menjadi tempat berkomunikasi. Dimana, file server tersebut akan menjadi lahan bertukar file atau informasi antara satu computer ke computer lainnya.</span></span></p></div><div id="https://www.notion.so/1cf8fd3dbb964c2e915de9934da817fe" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Selanjutnya, informasi tersebut dapat diakses atau digunakan pada computer klien yang menerima akses penerimaan informasi tersebut.</span></span></p></div></div></details><details id="https://www.notion.so/35e5c4733d1341e0a5a7ddd056b79f21" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Menjadi Tempat Penyimpanan</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/a0310cecafb6427bacc8a82f7e273e53" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Seperti yang telah tertuang pada manfaat file server ini maka jelas bahwa fungsi file server tersebut adalah menjadi tempat penyimpanan.</span></span></p></div><div id="https://www.notion.so/cd3c10cc288745029ed940d3f07f6fea" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Sehingga, file – file yang ada pada suatu computer dapat disimpan pada file server dan mengurangi penggunaan penyimpanan pada computer. Hal ini tentu saja dapat menghemat biaya pada segi apapun.</span></span></p></div></div></details><details id="https://www.notion.so/ebe11c226173437fb9e998782d66f3b4" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Keuntungan Menggunakan File Server</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/2ac54dd1044f4f08a5b5badac16fc88c" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Terdapat beberapa keuntungan yang akan Anda dapatkan apabila menggunakan file server. Adapun keuntungan yang dimiliki tersebut adalah terdapatnya penyimpanan sebuah data yang lebih efektif dan efisien dalam pengintegrasian data secara aman.</span></span></p></div><div id="https://www.notion.so/19c42708bcdf4135bb6d6b072c701425" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Dengan kata lain, adanya file server tersebut sangat bermanfaat dalam penyimpanan dan pertukaran data secara local tersebut.</span></span></p></div></div></details><h1 id="https://www.notion.so/e705903caacd44a1b644d2f92ebed71e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/e705903caacd44a1b644d2f92ebed71e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Kelebihan dan Kekurangan File Server</strong></strong></span></span></h1><div id="https://www.notion.so/6aab770b3f5540a48f2fe2d7f1bae50f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Terdapat beberapa kelebihan dan kekurangan dari penggunaan file server tersebut yang wajib Anda ketahui.</span></span></p></div><div id="https://www.notion.so/97915cdde84e4ae7a6cfb79a2c8556a2" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Dari kelebihan dan kekurangan tersebut maka Anda semakin memahami penggunaannya dan akan memilih penggunaan file server secara baik dan berhati – hati.</span></span></p></div><details id="https://www.notion.so/45693831df7142768718dfeecfb189c7" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Kelebihan File Server</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/7d846045c7c544ee9afec821a382f0e2" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Kelebihan file server sudah sangat jelas terdeskripsi melalui beberapa penjelasan di atas, yakni file server ini sangat mudah, aman, dan menguntungkan digunakan.</span></span></p></div><div id="https://www.notion.so/53976560570a470a9e74dd705c588168" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Cukup beberapa langkah maka proses integrasi data dapat terjalin dengan baik dan dapat diakses oleh klien – klien pada sebuah aksesibel jaringan tersebut.</span></span></p></div></div></details><details id="https://www.notion.so/dbf5ce7e0551472d913aed1934f276b0" class="ColorfulBlock ColorfulBlock--ColorDefault Toggle "><summary class="Toggle__Summary"><span class="SemanticStringArray"><span class="SemanticString">Kekurangan File Server</span></span></summary><div class="Toggle__Content"><div id="https://www.notion.so/d89a952471444decbb998cf3540379c7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Kekurangan file server yang wajib Anda ketahui adalah seperti produk teknologi lainnya tentu saja tidak terhindar dari eror pada beberapa waktu dan membutuhkan pemeliharaan.</span></span></p></div><div id="https://www.notion.so/022a99daab7f43b481687a2ab91a33cf" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Namun, apabila penggunaannya dapat digunakan secara tepat dan melakukan pemeliharaan secara berkala maka tidak ada kendala dalam pemanfaatan file server tersebut.</span></span></p></div></div></details><h1 id="https://www.notion.so/cd93fec9f572439081918dfe9db9408e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/cd93fec9f572439081918dfe9db9408e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Kesimpulan</strong></strong></span></span></h1><div id="https://www.notion.so/b9bd5dce9415487aaec149c625845cdc" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Dari berbagai materi seputar file server di atas tentu saja Anda semakin paham tentang penggunaan file server tersebut.</span></span></p></div><div id="https://www.notion.so/9d079e8187bc48d592c93f8ecfde35e7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Selain itu, Anda juga akan memahami betapa pentingnya penggunaan file server tersebut dalam proses komunikasi dan integrasi informasi maupun data pada sebuah komite atau organisasi berserta cara kerjanya yang spesifik.</span></span></p></div><h1 id="https://www.notion.so/54fca9bfb8cc4cf5b173af6747a974e9" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/54fca9bfb8cc4cf5b173af6747a974e9"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Catatan</span></span></h1><div id="https://www.notion.so/17aecae276cc4def9f935ab5efb7f291" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Materi PPT dapat di download </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://drive.google.com/file/d/1KastcyS02CGljpTRupKdpsn91y_8QYpC/view?usp=sharing">di sini</a></span></span></p></div><div id="https://www.notion.so/3d0d8696da864b0aac7069854f09c900" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div></article>
+  <script
+      src="https://utteranc.es/client.js"
+      repo="abdullahainun/abdullahainun.github.io"
+      issue-term="title"
+      label="💬 Blog Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  <footer class="Footer">
+  <div>&copy; Ainun’s Notes 2022</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
