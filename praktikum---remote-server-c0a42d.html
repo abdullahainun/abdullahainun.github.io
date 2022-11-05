@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Praktikum - Remote Server&nbsp;|&nbsp;Ainun’s Notes</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Praktikum - Remote Server">
+  
+    <meta name="description" content="Praktikum Remote Server menggunakan protocol ssh">
+    <meta property="og:description" content="Praktikum Remote Server menggunakan protocol ssh">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📕&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Library</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="user-manual.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👨🏻‍💻&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>[WIP] How to work with me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👣&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+      <div class="Header__Cover">
+        <img src="https://www.notion.so/images/page-cover/solid_red.png">
+      </div>
+    
+    <div class="Header__Spacer ">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Praktikum - Remote Server</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Sun, Oct 30, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/TKJ.html">TKJ</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Administrasi Sistem Jaringan.html">Administrasi Sistem Jaringan</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/Praktikum.html">Praktikum</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/c0a42d7dd4514df6bb32aba70d506376" class="PageRoot"><h1 id="https://www.notion.so/7c382b1dfd544048891f3c6c2676b713" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/7c382b1dfd544048891f3c6c2676b713"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Design System</span></span></h1><div id="https://www.notion.so/9cd68ad79d46421ba3c2589adfc389d7" class="Image Image--PageWidth"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fea6d4e48-7cc4-4f5a-bdf8-cf9f00e723da%2Fssh_server.png?width=1378&amp;table=block&amp;id=9cd68ad7-9d46-421b-a3c2-589adfc389d7"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fea6d4e48-7cc4-4f5a-bdf8-cf9f00e723da%2Fssh_server.png?width=1378&amp;table=block&amp;id=9cd68ad7-9d46-421b-a3c2-589adfc389d7" style="width:100%"/></a><figcaption><span class="SemanticStringArray"><span class="SemanticString">Gambar 1: Topologi LAN Yang berisi sebuah ssh server</span></span></figcaption></figure></div><div id="https://www.notion.so/972dabc98a174d6887c39a2cd783368f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/479cb74695184fc3bfe08cfd6b27a35c" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Pada praktikum kali ini, kita akan membangun ssh server dengan rancangan infrastruktur seperti topologi diatas. ssh merupakan protokol yang sering digunakan untuk melakukan remote ke sebuah komputer atau server tertentu. dengan memanfaatkan ssh kita bisa mengendalikan komputer yang jauh dengan kita secara lokasi fisik. sebagai contoh kita dapat mengendalikan komputer server yang ada di negara singapura untuk menyediakan sebuah layanan tertentu sementara kita secara fisik sedang berada di gresik atau di rumah kita masing-masing.</span></span></p></div><h1 id="https://www.notion.so/59c1f9291f6c4c1fbf485cdf999d0405" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/59c1f9291f6c4c1fbf485cdf999d0405"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Step 1 - Install openssh-server</span></span></h1><ol class="NumberedListWrapper"><li id="https://www.notion.so/9e57ce1ac7314cecb18fc6815f2a3183" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Buka aplikasi terminal pada Ubuntu desktop.</span></span></li><li id="https://www.notion.so/4cecf737663e493c86f4ba79a57b8c04" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">Ketikkan command berikut:</span></span></li></ol><pre id="https://www.notion.so/d1d5fd242126471f86d4643799d773b0" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openssh-server</span></span></span></code></pre><ol class="NumberedListWrapper"><li id="https://www.notion.so/7280ab5836f041eca8defd91407d39d8" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Enable service ssh dengan perintah berikut:</span></span></li></ol><pre id="https://www.notion.so/1c6654428b1a4665a6dbf58ee6b0c326" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token function">ssh</span>
+<span class="token comment">## OR enable and start the ssh service immediately ##</span>
+$ <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token function">ssh</span> --now</span></span></span></code></pre><ol class="NumberedListWrapper"><li id="https://www.notion.so/05ce015ff72b49f1b6172ca178448876" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Start service ssh dengan command ini:</span></span></li></ol><pre id="https://www.notion.so/a17e642cb5a549a0a1ff26d108a59ae1" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">sudo</span> systemctl start <span class="token function">ssh</span></span></span></span></code></pre><ol class="NumberedListWrapper"><li id="https://www.notion.so/7e0f576ab6b241e38d30ae22561b4511" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Mencoba menggunakan ssh client:</span></span></li></ol><pre id="https://www.notion.so/16781c37c52749c3afc1cc8c6d582112" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">ssh</span> userName@Your-server-name-IP
+$ <span class="token function">ssh</span> ubuntu@192.168.91.10</span></span></span></code></pre><h1 id="https://www.notion.so/02e25d88348c4af097a1857122f03ff7" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/02e25d88348c4af097a1857122f03ff7"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Step 2 - Rancang Topologi jaringan </span></span></h1><div id="https://www.notion.so/478b8372208d4015aa167d6ea3a0342b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">lakukan perancangan infrastructure jaringan menggunakan design system gambar 1, gunakan mikrotik router dan switch untuk mendukung design system tersebut.</span></span></p></div><h1 id="https://www.notion.so/8136957e758b447a882cc9190988603b" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/8136957e758b447a882cc9190988603b"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Step 3 - Check SSH Server</span></span></h1><div id="https://www.notion.so/22ee0769ea704882a70cbc57f2af5283" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">setelah design system sudah selesai, saatnya memastikan ssh server yang sudah kita setup dapat diakses oleh client atau belum. tools yang bisa dimanfaatkan sepert ping, telnet maupun ssh client.</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/a32146e1eaa444aa904f573d4353dc36" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">ping</span></span><div id="https://www.notion.so/b2b8b5370f434633ae036243962ddbb2" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">untuk memastikan konektivitas antara client dengan ssh server tidak ada masalah</span></span></p></div><pre id="https://www.notion.so/b0ec6172b98647e4b5b00b1306074e56" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">ping</span> <span class="token number">192.168</span>.91.10</span></span></span></code></pre></li><li id="https://www.notion.so/1dc1a1828c344ad58189cfd9372f8baa" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">telnet</span></span><div id="https://www.notion.so/a64085d0b7e14405b5ddd824b84752c7" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">untuk memastikan port 22 sebagai port default openssh-server sudah terbuka</span></span></p></div><pre id="https://www.notion.so/b1d10729234e461f896aede0b9180fdf" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>telnet  <span class="token number">192.168</span>.91.10 <span class="token number">22</span></span></span></span></code></pre></li><li id="https://www.notion.so/3596ee0093914a09a5ed2d61a1851301" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">ssh</span></span><pre id="https://www.notion.so/b007ad5320e54cffb3dc8f0dc8a369a2" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">ssh</span> ubuntu@192.168.91.10 </span></span></span></code></pre></li></ul><h1 id="https://www.notion.so/e20458fffce94de1b8136e9bd7ea9694" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/e20458fffce94de1b8136e9bd7ea9694"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Step 4 - Konfigurasi agar bisa login tanpa password</span></span></h1><div id="https://www.notion.so/4485a1b98a5a4d9ea9ca7df964218aae" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">secara default untuk login ke ssh server menggunakan username dan password. namun hal tersebut pada tingkat yang lebih lanjut sebisa mungkin dapat kita hindari karena terkait masalah issue security. alternativenya kita bisa memanfaatkan certificate ssh antara server dan client untuk login tanpa menggunakan username atau password.</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/0ec5b8ed6b8b41c48f803d3a9817ca70" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">putty (bisa cari referensi di internet)</span></span></li><li id="https://www.notion.so/6f21475822d6405f88b34593d88d7662" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">ssh-copy-id (bisa cari referensi di internet)</span></span></li></ul><h1 id="https://www.notion.so/9654ef0e629d4743ae839bb4c5b6ae2c" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/9654ef0e629d4743ae839bb4c5b6ae2c"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Tugas</span></span></h1><div id="https://www.notion.so/08e5239b12b04903b4c4716756fbae7e" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Buatlah laporan praktikum diatas kertas.</span></span></p></div></article>
+  <script
+      src="https://utteranc.es/client.js"
+      repo="abdullahainun/abdullahainun.github.io"
+      issue-term="title"
+      label="💬 Blog Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  <footer class="Footer">
+  <div>&copy; Ainun’s Notes 2022</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>

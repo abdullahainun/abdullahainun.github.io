@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Dasar Teori - Web Server&nbsp;|&nbsp;Ainun’s Notes</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Dasar Teori - Web Server">
+  
+    <meta name="description" content="Dasar Teori Web Server">
+    <meta property="og:description" content="Dasar Teori Web Server">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📕&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Library</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="user-manual.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👨🏻‍💻&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>[WIP] How to work with me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👣&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+      <div class="Header__Cover">
+        <img src="https://www.notion.so/images/page-cover/solid_red.png">
+      </div>
+    
+    <div class="Header__Spacer ">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Dasar Teori - Web Server</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Fri, Nov 4, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/TKJ.html">TKJ</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Administrasi Sistem Jaringan.html">Administrasi Sistem Jaringan</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/Praktikum.html">Praktikum</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/d148463f3049498ca0cd45399c52449e" class="PageRoot"><h1 id="https://www.notion.so/2e2931e5dc084926b73c6e49810857f2" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/2e2931e5dc084926b73c6e49810857f2"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Apa itu web server ?</span></span></h1><div id="https://www.notion.so/45eb7ec9014f42b6802bf52400cc7bbd" class="Image Image--PageWidth"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fde4b35d9-b72e-4d17-a832-3ac35349ac89%2FUntitled.png?width=793&amp;table=block&amp;id=45eb7ec9-014f-42b6-802b-f52400cc7bbd"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fde4b35d9-b72e-4d17-a832-3ac35349ac89%2FUntitled.png?width=793&amp;table=block&amp;id=45eb7ec9-014f-42b6-802b-f52400cc7bbd" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/89511ede76c34e0aa959f88db366a48f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Apa itu Web Server? Sebelum mengetahui pengertian web server nya, apakah kamu tahu jika kamu bisa mengakses dan melihat website karena apa? Itu semua karena adanya sebuah server yang melayani. Server tersebut itulah yang dinamakan </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">web server</strong></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/f8ff6e9b5c7344f29ba1067bf86ef037" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Web Server adalah sebuah software yang berfungsi untuk menerima dan melayani permintaan yang dikirimkan user melalui browser kemudian ditampilkan kepada user sesuai dengan permintaan yang dikirimkan ke server. Bisa dikatakan web server adalah pusat kontrol yang berfungsi untuk memproses permintaan yang diterima dari browser. Layanan ini juga bisa merujuk sebagai software atau hardware.</span></span></p></div><div id="https://www.notion.so/52d15c0ce8d24e08858176cbafecbb0d" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Mengapa demikian? Karena sebuah server fisik atau </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.jagoanhosting.com/blog/apa-itu-vps/">server virtual</a></span><span class="SemanticString"> yang digunakan untuk menyimpan data website seperti HTML dokumen, gambar, file CSS stylesheets, dan file JavaScript juga bisa disebut sebagai web server.</span></span></p></div><div id="https://www.notion.so/0e0f950b3dac469fb9ad38353651c0e9" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Sedangkan Web Server berbasis Software berfungsi sebagai pusat kontrol untuk memproses permintaan yang diterima dari browser dan menampilkan sesuai dengan permintaan.</span></span></p></div><h1 id="https://www.notion.so/a6260e42a1ff41d494bab135630cc49d" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/a6260e42a1ff41d494bab135630cc49d"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Bagaimana Cara Kerja Web Server?</strong></span></span></h1><div id="https://www.notion.so/fdaa8719e645406ba5e6a68db02aa030" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">cara kerja web server adalah menerima dan memberikan layanan. Jika kamu lihat dari gambar diatas hal tersebut merupakan gambar ilustrasi dari cara kerja server.</span></span></p></div><div id="https://www.notion.so/1a55d437227b4a5c8f5861366cf7f51c" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Nah untuk flownya sendiri yaitu User melakukan permintaan melalui browser terhadap server (HTTP Request), Kemudian Server Menerima request dan memprosesnya menjadi halaman situs web (HTTP Response).</span></span></p></div><div id="https://www.notion.so/21055d2850ac44f6b2baf687fdf6c349" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Jadi web server bisa diibaratkan sebagai pelayan, Kamu bisa bebas meminta layanan sesuai ketentuan dan pelayanan memproses permintaan kamu untuk diberikan ke kamu hasilnya.</span></span></p></div><h1 id="https://www.notion.so/69c4c412ae8b4bb7bee411fcb5628909" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/69c4c412ae8b4bb7bee411fcb5628909"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Contoh Web server </span></span></h1><h2 id="https://www.notion.so/464fd77dfadc4380a13e34ad2f1fc37a" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/464fd77dfadc4380a13e34ad2f1fc37a"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Apache2</span></span></h2><div id="https://www.notion.so/0a6e32c9772b4767b3ec60118e82f116" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Apache adalah layanan web server yang paling populer, Berdasarkan </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://w3techs.com/technologies/cross/web_server/ranking">survei  W3Tech Top Ranks Web Server</a></span><span class="SemanticString"> di bulan januari 2020, Apache layanan server yang paling banyak digunakan. Bahkan dari semua web server yang ada, Penggunaan Apache mencapai 41.5%. Hal tersebut dikarenakan Apache sangat fleksibel, Apache sendiri bisa digunakan untuk berbagai sistem operasi.</span></span></p></div><div id="https://www.notion.so/d9d086fea98f46eb934be696bf7791dc" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Selain fleksibel, Konfigurasi dan pengaturan apache sangat mudah dan simple. Tidak ada pengaturan lebih lanjut untuk menggunakan web server yang satu ini. Hal tersebut menjadi alasan banyak orang menggunakan Apache sebagai web server.</span></span></p></div><h3 id="https://www.notion.so/2df8a3afe2b9418680e6a31b783d5a97" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/2df8a3afe2b9418680e6a31b783d5a97"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Kelebihan Web Server Apache :</span></span></h3><ol class="NumberedListWrapper"><li id="https://www.notion.so/8e384977b58444ceade8071c94e49476" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Konfigurasi yang Lebih Mudah</span></span></li><li id="https://www.notion.so/b521797e5b7840a086107ccbb27b2ed2" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">Bersifat Open Source</span></span></li><li id="https://www.notion.so/79e2239890334b5c93c1f7a96624ba91" class="NumberedList" value="3"><span class="SemanticStringArray"><span class="SemanticString">Jumlah Pengguna banyak sehingga komunitas besar</span></span></li></ol><h2 id="https://www.notion.so/a8ce5f3dda9245d18882c867e7279a91" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/a8ce5f3dda9245d18882c867e7279a91"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Nginx</span></span></h2><div id="https://www.notion.so/0c0f1557dfa14424b71ac29c4c2cc0cf" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">NginX adalah sebuah web server kedua yang paling banyak digunakan saat ini, Nginx atau bisa disebut Engine X banyak digemari karena layanan server yang satu ini cukup stabil dan hemat resource.</span></span></p></div><div id="https://www.notion.so/082208489c6b45bd960155af9efc3bd8" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Hal tersebut menjadi alasan mengapa NginX menjadi web server nomor dua yang paling banyak digunakan, Selain itu beberapa fitur NginX yang bisa lebih baik dalam menangani website yang bertrafik tinggi menjadi nilai plus NginX.</span></span></p></div><h3 id="https://www.notion.so/1e2c4b8979774e52807c3150db321caf" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/1e2c4b8979774e52807c3150db321caf"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Kelebihan Web Server NginX:</span></span></h3><ol class="NumberedListWrapper"><li id="https://www.notion.so/37c3b2e924c74445aa368d0c6cb9437a" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Lebih Ringan</span></span></li><li id="https://www.notion.so/a7f076c9cb31460f880a158825fe923c" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">Stabil dan Hemat Resource</span></span></li><li id="https://www.notion.so/43c2f5dd8a924635bd4f7c60ad57a4cf" class="NumberedList" value="3"><span class="SemanticStringArray"><span class="SemanticString">Performa lebih baik dalam menangani website bertrafik tinggi</span></span></li></ol></article>
+  <script
+      src="https://utteranc.es/client.js"
+      repo="abdullahainun/abdullahainun.github.io"
+      issue-term="title"
+      label="💬 Blog Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  <footer class="Footer">
+  <div>&copy; Ainun’s Notes 2022</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
