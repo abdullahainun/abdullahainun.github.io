@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Dasar Teori - DNS Server&nbsp;|&nbsp;Ainun’s Notes</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Dasar Teori - DNS Server">
+  
+    <meta name="description" content="Dasar Teori DNS Server">
+    <meta property="og:description" content="Dasar Teori DNS Server">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📕&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Library</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="user-manual.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👨🏻‍💻&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>[WIP] How to work with me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👣&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+      <div class="Header__Cover">
+        <img src="https://www.notion.so/images/page-cover/solid_red.png">
+      </div>
+    
+    <div class="Header__Spacer ">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Dasar Teori - DNS Server</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Sat, Nov 19, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/TKJ.html">TKJ</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Administrasi Sistem Jaringan.html">Administrasi Sistem Jaringan</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/Praktikum.html">Praktikum</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/44889be2e4164e009e6fd49d4dd3e252" class="PageRoot"><h1 id="https://www.notion.so/2cc00063510e4ff8845eba0e4fb10861" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/2cc00063510e4ff8845eba0e4fb10861"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Apa itu DNS server ?</span></span></h1><div id="https://www.notion.so/e9cf9f423f354a61b9ebffa34c3f9b96" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Singkatnya, domain name system atau DNS server adalah sebuah sistem yang digunakan untuk menerjemahkan alamat domain Anda menjadi IP address yang lebih dipahami oleh komputer.</span></span></p></div><div id="https://www.notion.so/5a0b2846ee764910958998d75ffe4413" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Tanpa DNS, pengunjung website harus memasukkan serangkaian nomor IP address secara lengkap ketika ingin mengunjungi sebuah website.</span></span></p></div><h1 id="https://www.notion.so/b775b26545d2400dbc16470c7e9e6062" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/b775b26545d2400dbc16470c7e9e6062"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Cara Kerja DNS</span></span></h1><div id="https://www.notion.so/3bbab8a65fc441ef8a1ece3f532fc954" class="Image Image--Normal"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2bdcfa6d-adde-4d85-8266-f480c160f928%2FUntitled.png?width=547&amp;table=block&amp;id=3bbab8a6-5fc4-41ef-8a1e-ce3f532fc954"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2bdcfa6d-adde-4d85-8266-f480c160f928%2FUntitled.png?width=547&amp;table=block&amp;id=3bbab8a6-5fc4-41ef-8a1e-ce3f532fc954" style="width:547px"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/674003c1fe204b6cafc14b5ca8028e3b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/fca3b8fb42a6489b8bb434a83eca16a0" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">jika anda ingin mengunjungi domain tertentu semisal </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="http://www.example.com">www.example.com</a></span><span class="SemanticString"> maka tahapan yang terjadi sebenarnya di belakang layar adalah sebagai berikut:</span></span></p></div><ol class="NumberedListWrapper"><li id="https://www.notion.so/c96fde5bdacb4ddd9cfe66fdf41f7833" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">browser bertanya ke DNS Server berapa ip address dari domain www.example.com</span></span></li><li id="https://www.notion.so/458bc376faf14367abdbc8f46d0b2314" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">DNS Server memberikan jawaban berupa ip  address dari domain www.example.com</span></span></li><li id="https://www.notion.so/b9d5adac473e45c0bfdf63d12e7ec575" class="NumberedList" value="3"><span class="SemanticStringArray"><span class="SemanticString">browser meminta/request ke web server menggunakan ip address www.example.com</span></span></li><li id="https://www.notion.so/dfdad1bbbb854c29ac6134ff5d5027f6" class="NumberedList" value="4"><span class="SemanticStringArray"><span class="SemanticString">Web Server memberikan response berupa halaman website/html ke web browser yang meminta/request</span></span></li></ol><div id="https://www.notion.so/ac303116f6514323a4e0d7b7c9378d90" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Dari proses diatas dapat diasumsikan bahwa DNS Server merupakan buku telepon yang biasanya ketika kita ingin menghubungi teman kita maka cukup membuka aplikasi kontak telepon dan mencari namanya, setelah itu aplikasi kontak telepon akan menerjemahkan nama teman yang kita simpan ke no telepon yang sebenarnya.</span></span></p></div><h1 id="https://www.notion.so/54cdec0687b246528cf04698a3193a1b" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/54cdec0687b246528cf04698a3193a1b"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Macam - macam tipe record DNS</span></span></h1><ul class="BulletedListWrapper"><li id="https://www.notion.so/ca1d0a1f091441c58717d33ca96df7c1" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">A records – points to IPv4 address of machine where website is hosted</strong></span></span></li><li id="https://www.notion.so/d1c3605875cc498b9d43f1257b005181" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">AAAA records – points to IPv6 address of machine where website is hosted</span></span></li><li id="https://www.notion.so/67f95acefef4474e8eb045c01998b3d1" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">MX – points to email servers</strong></span></span></li><li id="https://www.notion.so/119c68dc490b417e98613d9fa6845296" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">CNAME – canonical name for alias points hostname to hostname</span></span></li><li id="https://www.notion.so/1885ea4d926c45f2a721b78e0ccf6c6b" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">ANAME – Auto resolved alias, works like cname but points hostname to IP of hostname</span></span></li><li id="https://www.notion.so/cc6c122b8ad2413a9ec343e34812ff05" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">NS – nameservers for subdomains</strong></span></span></li><li id="https://www.notion.so/667bd68dd37f4e02bdca3ccbb3bc5f47" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">PTR – IP address to hostname</span></span></li><li id="https://www.notion.so/d7e3632f8e96456ab9c2e01f06547119" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">SOA – containing administrative information about the DNS zone</span></span></li><li id="https://www.notion.so/a9c4954a5af0430c84f4d3466d52e961" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">SRV – service record for other services</span></span></li><li id="https://www.notion.so/0b178ff1b8a14558bfd7bc839cbd55ca" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">TXT – Text records mostly used for verification, SPF, DKIM, DMARC and more</span></span></li><li id="https://www.notion.so/776caa03f6804a63b7df0062103e7895" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">CAA – certificate authority record for SSL/TLS certificate</span></span></li></ul><div id="https://www.notion.so/6a2c2afd0c334c8f90b1b31af808bacd" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/345056cd815e48b9882b052492ca6e8a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/983965f1bf3d4c5ca445b914fe1762ac" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">References:</span></span></p></div><div id="https://www.notion.so/b69827ab44e343f4a4ca16f2397a379b" class="Embed"><div class="Embed__Content"><div class="Embed__ResponsiveContainer" style="width:-1px;height:-1px"><iframe src="#" sandbox="allow-scripts allow-popups allow-forms allow-same-origin" allowfullscreen=""></iframe></div></div></div><div id="https://www.notion.so/16e0b22de6c4461997ef70b80b74dae4" class="Bookmark"><a href="https://www.geeksforgeeks.org/working-of-domain-name-system-dns-server/"><h5 class="Bookmark__Title">Working of Domain Name System (DNS) Server - GeeksforGeeks</h5><p class="Bookmark__Desc">Prerequisite - Domain Name System (DNS) in Application Layer In the world of networking, computers do not represent by names like humans do, they represent by numbers because that is how computers and other similar devices talk and identify with each other over a network, which is by using numbers such as IP addresses.</p><p class="Bookmark__Link">https://www.geeksforgeeks.org/working-of-domain-name-system-dns-server/</p></a></div></article>
+  <script
+      src="https://utteranc.es/client.js"
+      repo="abdullahainun/abdullahainun.github.io"
+      issue-term="title"
+      label="💬 Blog Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  <footer class="Footer">
+  <div>&copy; Ainun’s Notes 2022</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Praktikum - DNS Server&nbsp;|&nbsp;Ainun’s Notes</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Praktikum - DNS Server">
+  
+    <meta name="description" content="Praktikum DNS Server">
+    <meta property="og:description" content="Praktikum DNS Server">
+  
+  
+    <meta property="og:image" content="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0802f281-b88e-4290-a48e-40c5a678b592%2Ffavicon.svg?table=collection&amp;id=4d939fd8-100e-4142-9d06-cfd7425cd296"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📕&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Library</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="user-manual.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👨🏻‍💻&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>[WIP] How to work with me</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;👣&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+</nav>
+  <header class="Header">
+    
+      <div class="Header__Cover">
+        <img src="https://www.notion.so/images/page-cover/solid_red.png">
+      </div>
+    
+    <div class="Header__Spacer ">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🧑‍💻&lt;/text&gt;&lt;/svg&gt;"></span>
+      </div>
+    
+    <h1 class="Header__Title">Praktikum - DNS Server</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Sat, Nov 19, 2022</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/TKJ.html">TKJ</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--orange">
+            <a href="tag/Administrasi Sistem Jaringan.html">Administrasi Sistem Jaringan</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/Praktikum.html">Praktikum</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/debee99df55b4390baccf80391bf57e7" class="PageRoot"><h1 id="https://www.notion.so/eb290a8ca1884931b4249097fbec52ae" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/eb290a8ca1884931b4249097fbec52ae"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">domain local sederhana dengan /etc/hosts</span></span></h1><ul class="BulletedListWrapper"><li id="https://www.notion.so/80ee414898004f3babfc4b9e588ef941" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">check hostname atau ip address komputer local anda</span></span></li></ul><pre id="https://www.notion.so/0560a22d77284775b8f512087ad12975" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">hostname</span> -I
+<span class="token number">192.168</span>.4.9
+$ <span class="token function">ip</span> -c a
+<span class="token number">2</span>: enp0s3: <span class="token operator">&lt;</span>BROADCAST,MULTICAST,UP,LOWER_UP<span class="token operator">></span> mtu <span class="token number">1500</span> qdisc pfifo_fast state UP group default qlen <span class="token number">1000</span>
+    inet <span class="token number">192.168</span>.4.9/24 brd <span class="token number">192.168</span>.4.255 scope global dynamic enp0s3</span></span></span></code></pre><ul class="BulletedListWrapper"><li id="https://www.notion.so/466c90c5aa76428daadfe27dda0a12eb" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">tambahkan ip address anda dengan nama domain tertentu. semisal ainun.local</span></span></li></ul><pre id="https://www.notion.so/a8be27784b944e2297c88d605ab57887" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">sudo</span> <span class="token function">nano</span> /etc/hosts
+<span class="token number">127.0</span>.0.1       localhost
+<span class="token number">127.0</span>.1.1       aal-VirtualBox
+<span class="token number">192.168</span>.4.9     ainun.local
+
+<span class="token comment"># The following lines are desirable for IPv6 capable hosts</span>
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters</span></span></span></code></pre><div id="https://www.notion.so/86d54f494bcd49f1974cb1c2bfed835e" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">untuk menyimpan file menggunakan nano, tekan tombol CTRL + O</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/a585efa1145b4b01aea1a3a0e6cbdc50" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">check website domain ainun.local</span></span></li></ul><pre id="https://www.notion.so/717db73944a7402584a4375f207285a7" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span>$ <span class="token function">curl</span> ainun.local
+hai, ini adalah halaman website ainun.local</span></span></span></code></pre><h1 id="https://www.notion.so/d142395345fc475380c607b63d0c384c" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--1"><a class="Anchor" href="#https://www.notion.so/d142395345fc475380c607b63d0c384c"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Membuat DNS Server menggunakan Bing9 (live) </span></span></h1><div id="https://www.notion.so/983332fad5314b63862827f916c20801" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">References:</span></span></p></div><div id="https://www.notion.so/3895c32930494d3d898eddcbac1ac526" class="Bookmark"><a href="https://www.alibabacloud.com/blog/how-to-setup-dns-server-using-bind9-on-ubuntu-16-04_594469"><h5 class="Bookmark__Title">How to Setup DNS server using Bind9 on Ubuntu 16.04</h5><p class="Bookmark__Desc">Alibaba Clouder February 15, 2019 46,864 Join us at the Alibaba Cloud ACtivate Online Conference on March 5-6 to challenge assumptions, exchange ideas, and explore what is possible through digital transformation. By Hitesh Jethva, Alibaba Cloud Tech Share Author. Tech Share is Alibaba Cloud&#x27;s incentive program to encourage the sharing of technical knowledge and best practices within the cloud community.</p><p class="Bookmark__Link">https://www.alibabacloud.com/blog/how-to-setup-dns-server-using-bind9-on-ubuntu-16-04_594469</p></a></div></article>
+  <script
+      src="https://utteranc.es/client.js"
+      repo="abdullahainun/abdullahainun.github.io"
+      issue-term="title"
+      label="💬 Blog Comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  <footer class="Footer">
+  <div>&copy; Ainun’s Notes 2022</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
